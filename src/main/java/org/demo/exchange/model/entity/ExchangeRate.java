@@ -1,5 +1,6 @@
 package org.demo.exchange.model.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class ExchangeRate {
 
     private String type;
 
+    @Column(name="_value") // Specify the column type explicitly
     private double value;
 
 }
