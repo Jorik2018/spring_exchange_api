@@ -1,3 +1,8 @@
+package org.demo.exchange.controller;
+
+import org.demo.exchange.model.ExchangeRequest;
+import org.demo.exchange.model.entity.ExchangeRate;
+import org.demo.exchange.service.ExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,21 +35,21 @@ public class ExchangeRateController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ExchangeRate> getExchangeRateById(@PathVariable Long id) {
+    public ResponseEntity<ExchangeRate> getExchangeRateById(@PathVariable Integer id) {
         Optional<ExchangeRate> exchangeRate = exchangeRateService.getExchangeRateById(id);
         return exchangeRate.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ExchangeRate> updateExchangeRate(@PathVariable Long id, @RequestBody ExchangeRate exchangeRate) {
+    public ResponseEntity<ExchangeRate> updateExchangeRate(@PathVariable Integer id, @RequestBody ExchangeRate exchangeRate) {
         Optional<ExchangeRate> updatedExchangeRate = exchangeRateService.updateExchangeRate(id, exchangeRate);
         return updatedExchangeRate.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteExchangeRate(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteExchangeRate(@PathVariable Integer id) {
         boolean deleted = exchangeRateService.deleteExchangeRate(id);
         return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }

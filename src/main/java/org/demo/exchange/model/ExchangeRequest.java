@@ -1,3 +1,5 @@
+package org.demo.exchange.model;
+
 import lombok.Data;
 
 @Data

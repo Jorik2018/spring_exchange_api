@@ -1,14 +1,15 @@
-import lombok.Getter;
-import lombok.Setter;
+package org.demo.exchange.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
+
+
 
 @Entity
-@Getter
-@Setter
+@Data
 public class ExchangeRate {
 
     @Id
@@ -16,5 +17,7 @@ public class ExchangeRate {
     private int id;
 
     private String type;
+
     private double value;
+
 }
