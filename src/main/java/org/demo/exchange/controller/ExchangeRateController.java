@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/exchangerate")
+@RequestMapping("/api/exchange")
 public class ExchangeRateController {
 
     private final ExchangeRateService exchangeRateService;
