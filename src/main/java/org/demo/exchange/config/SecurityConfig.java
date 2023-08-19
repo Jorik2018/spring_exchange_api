@@ -27,14 +27,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-        .csrf()
-        .disable()
-        .authorizeRequests()
-        .requestMatchers("/api/auth/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
+        .csrf(csrf -> csrf.disable())
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers("/api/auth/**").permitAll()
+            .anyRequest().authenticated()
+        )
         .authenticationProvider(authenticationProvider)
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -42,3 +39,5 @@ public class SecurityConfig {
         return http.build();
     }
 }
+
+//https://stackoverflow.com/questions/74683225/updating-to-spring-security-6-0-replacing-removed-and-deprecated-functionality
